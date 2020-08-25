@@ -37,7 +37,7 @@ namespace DoodleJump.Classes
                 transform.position.X += dx;
             }
 
-            if (transform.position.Y < 700 || a < 0)
+            if (transform.position.Y < 700)
             {
                 transform.position.Y += gravity;
 

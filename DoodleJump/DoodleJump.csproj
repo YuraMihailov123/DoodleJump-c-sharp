@@ -86,9 +86,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="man.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Images\back.png" />
   </ItemGroup>
   <ItemGroup>
