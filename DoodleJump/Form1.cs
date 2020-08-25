@@ -36,9 +36,9 @@ namespace DoodleJump
         public void Init()
         {
             PlatformsController.platforms = new List<Platform>();
-            PlatformsController.AddPlatform(new PointF(100, 300));
-            PlatformsController.AddPlatform(new PointF(160, 300));
-            PlatformsController.AddPlatform(new PointF(160, 250));
+            PlatformsController.AddPlatform(new PointF(100, 400));
+            PlatformsController.startPlatformPosY = 400;
+            PlatformsController.GenerateStartSequence();
             player = new Player();
         }
 
@@ -62,13 +62,23 @@ namespace DoodleJump
 
         private void Update(object sender, EventArgs e)
         {
-            this.Text = player.physics.transform.position.X.ToString() + " - " + player.physics.transform.position.Y.ToString();
-            if (player.physics.transform.position.Y >= 700)
+            if (player.physics.transform.position.Y >= PlatformsController.platforms[0].transform.position.Y+200)
                 Init();
             player.physics.ApplyPhysics();
-            
+            FollowPlayer();
             
             Invalidate();
+        }
+
+        public void FollowPlayer()
+        {
+            int offset = 400 - (int)player.physics.transform.position.Y;
+            player.physics.transform.position.Y += offset;
+            for (int i = 0; i < PlatformsController.platforms.Count; i++)
+            {
+                var platform = PlatformsController.platforms[i];
+                platform.transform.position.Y += offset;
+            }
         }
 
         private void OnRepaint(object sender, PaintEventArgs e)

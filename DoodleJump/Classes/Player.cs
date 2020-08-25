@@ -15,7 +15,7 @@ namespace DoodleJump.Classes
         public Player()
         {
             sprite = Properties.Resources.man;
-            physics = new Physics(new PointF(100, 150), new Size(40, 40));
+            physics = new Physics(new PointF(100, 350), new Size(40, 40));
         }
 
         public void DrawSprite(Graphics g)

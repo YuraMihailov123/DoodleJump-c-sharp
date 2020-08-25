@@ -60,7 +60,7 @@ namespace DoodleJump.Classes
                             AddForce(a / 2);
                             if (!platform.isTouchedByPlayer)
                             {
-                                Offset();
+                                PlatformsController.GenerateRandomPlatform();
                                 platform.isTouchedByPlayer = true;
                             }
                         }
@@ -74,17 +74,5 @@ namespace DoodleJump.Classes
             gravity -= a;
             gravity = -10;
         }
-
-        public void Offset()
-        {
-            transform.position.Y += 50;
-            for (int i = 0; i < PlatformsController.platforms.Count; i++)
-            {
-                var platform = PlatformsController.platforms[i];
-                platform.transform.position.Y += 50;
-            }
-        }
-
-
     }
 }
