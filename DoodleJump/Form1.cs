@@ -38,6 +38,7 @@ namespace DoodleJump
             PlatformsController.platforms = new List<Platform>();
             PlatformsController.AddPlatform(new PointF(100, 400));
             PlatformsController.startPlatformPosY = 400;
+            PlatformsController.score = 0;
             PlatformsController.GenerateStartSequence();
             player = new Player();
         }
@@ -52,16 +53,18 @@ namespace DoodleJump
             switch (e.KeyCode.ToString())
             {
                 case "Right":
-                    player.physics.dx = 5;
+                    player.physics.dx = 6;
                     break;
                 case "Left":
-                    player.physics.dx = -5;
+                    player.physics.dx = -6;
                     break;
             }
         }
 
         private void Update(object sender, EventArgs e)
         {
+            this.Text = "Doodle Jump: Score - " + PlatformsController.score;
+
             if (player.physics.transform.position.Y >= PlatformsController.platforms[0].transform.position.Y+200)
                 Init();
             player.physics.ApplyPhysics();

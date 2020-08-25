@@ -11,6 +11,7 @@ namespace DoodleJump.Classes
     {
         public static List<Platform> platforms;
         public static int startPlatformPosY = 400;
+        public static int score = 0;
 
         public static void AddPlatform(PointF position)
         {

@@ -60,6 +60,7 @@ namespace DoodleJump.Classes
                             AddForce(a / 2);
                             if (!platform.isTouchedByPlayer)
                             {
+                                PlatformsController.score += 20;
                                 PlatformsController.GenerateRandomPlatform();
                                 platform.isTouchedByPlayer = true;
                             }
