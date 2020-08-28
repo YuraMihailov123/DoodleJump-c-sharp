@@ -1,13 +1,6 @@
 ﻿using DoodleJump.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DoodleJump
@@ -27,7 +20,6 @@ namespace DoodleJump
             this.KeyDown += new KeyEventHandler(OnKeyboardPressed);
             this.KeyUp += new KeyEventHandler(OnKeyboardUp);
             this.BackgroundImage = Properties.Resources.back;
-            this.Text = "Doodle Jump";
             this.Height = 600;
             this.Width = 330;
             this.Paint += new PaintEventHandler(OnRepaint);
@@ -35,20 +27,20 @@ namespace DoodleJump
 
         public void Init()
         {
-            PlatformsController.platforms = new List<Platform>();
-            PlatformsController.AddPlatform(new PointF(100, 400));
-            PlatformsController.startPlatformPosY = 400;
-            PlatformsController.score = 0;
-            PlatformsController.GenerateStartSequence();
+            PlatformController.platforms = new System.Collections.Generic.List<Platform>();
+            PlatformController.AddPlatform(new System.Drawing.PointF(100, 400));
+            PlatformController.startPlatformPosY = 400;
+            PlatformController.score = 0;
+            PlatformController.GenerateStartSequence();
             player = new Player();
         }
 
-        private void OnKeyboardUp(object sender, KeyEventArgs e)
+        private void OnKeyboardUp(object sender,KeyEventArgs e)
         {
             player.physics.dx = 0;
         }
 
-        private void OnKeyboardPressed(object sender, KeyEventArgs e)
+        private void OnKeyboardPressed(object sender,KeyEventArgs e)
         {
             switch (e.KeyCode.ToString())
             {
@@ -61,15 +53,16 @@ namespace DoodleJump
             }
         }
 
-        private void Update(object sender, EventArgs e)
+        private void Update(object sender,EventArgs e)
         {
-            this.Text = "Doodle Jump: Score - " + PlatformsController.score;
+            this.Text = "Doodle Jump: Score - " + PlatformController.score;
 
-            if (player.physics.transform.position.Y >= PlatformsController.platforms[0].transform.position.Y+200)
+            if (player.physics.transform.position.Y >= PlatformController.platforms[0].transform.position.Y + 200)
                 Init();
+
             player.physics.ApplyPhysics();
             FollowPlayer();
-            
+
             Invalidate();
         }
 
@@ -77,9 +70,9 @@ namespace DoodleJump
         {
             int offset = 400 - (int)player.physics.transform.position.Y;
             player.physics.transform.position.Y += offset;
-            for (int i = 0; i < PlatformsController.platforms.Count; i++)
+            for(int i = 0; i < PlatformController.platforms.Count; i++)
             {
-                var platform = PlatformsController.platforms[i];
+                var platform = PlatformController.platforms[i];
                 platform.transform.position.Y += offset;
             }
         }
@@ -87,10 +80,10 @@ namespace DoodleJump
         private void OnRepaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            if (PlatformsController.platforms.Count > 0)
+            if (PlatformController.platforms.Count > 0)
             {
-                for (int i = 0; i < PlatformsController.platforms.Count; i++)
-                    PlatformsController.platforms[i].DrawSprite(g);
+                for (int i = 0; i < PlatformController.platforms.Count; i++)
+                    PlatformController.platforms[i].DrawSprite(g);
             }
             player.DrawSprite(g);
         }

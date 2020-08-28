@@ -15,7 +15,6 @@ namespace DoodleJump.Classes
         public int sizeY;
         public bool isTouchedByPlayer;
 
-
         public Platform(PointF pos)
         {
             sprite = Properties.Resources.platform;
@@ -27,8 +26,8 @@ namespace DoodleJump.Classes
 
         public void DrawSprite(Graphics g)
         {
-            g.DrawImage(sprite, transform.position.X, transform.position.Y, sizeX,sizeY);
-            //g.DrawImage(sprite, new Rectangle((int)physics.position.X, (int)physics.position.Y, sizeX, sizeY), 0, 0, 68, 14, GraphicsUnit.Pixel);
+            g.DrawImage(sprite, transform.position.X, transform.position.Y, transform.size.Width, transform.size.Height);
         }
+
     }
 }

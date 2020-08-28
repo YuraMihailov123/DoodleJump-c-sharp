@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DoodleJump.Classes
 {
-    public static class PlatformsController
+     public static class PlatformController
     {
         public static List<Platform> platforms;
         public static int startPlatformPosY = 400;
@@ -27,7 +27,7 @@ namespace DoodleJump.Classes
                 int x = r.Next(0, 270);
                 int y = r.Next(30, 40);
                 startPlatformPosY -= y;
-                PointF position = new PointF(x,startPlatformPosY);
+                PointF position = new PointF(x, startPlatformPosY);
                 Platform platform = new Platform(position);
                 platforms.Add(platform);
             }
@@ -37,7 +37,7 @@ namespace DoodleJump.Classes
         {
             ClearPlatforms();
             Random r = new Random();
-            int x = r.Next(0, 270);
+            int x = r.Next(0,270);
             PointF position = new PointF(x, startPlatformPosY);
             Platform platform = new Platform(position);
             platforms.Add(platform);
@@ -45,7 +45,7 @@ namespace DoodleJump.Classes
 
         public static void ClearPlatforms()
         {
-            for (int i = 0; i < platforms.Count; i++)
+            for(int i = 0; i < platforms.Count; i++)
             {
                 if (platforms[i].transform.position.Y >= 700)
                     platforms.RemoveAt(i);

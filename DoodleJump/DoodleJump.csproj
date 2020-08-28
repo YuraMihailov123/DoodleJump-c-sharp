@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Classes\Physics.cs" />
     <Compile Include="Classes\Platform.cs" />
-    <Compile Include="Classes\PlatformsController.cs" />
+    <Compile Include="Classes\PlatformController.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Transform.cs" />
     <Compile Include="Form1.cs">
