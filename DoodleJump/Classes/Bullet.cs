@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 
 namespace DoodleJump.Classes
 {
-    public class Player
+    public class Bullet
     {
         public Physics physics;
         public Image sprite;
 
-        public Player()
+        public Bullet(PointF pos)
         {
-            sprite = Properties.Resources.man2;
-            physics = new Physics(new PointF(100, 350), new Size(40, 40));
+            sprite = Properties.Resources.bullet;
+            physics = new Physics(pos, new Size(15, 15));
+        }
+
+        public void MoveUp()
+        {
+            physics.transform.position.Y -= 15;
         }
 
         public void DrawSprite(Graphics g)

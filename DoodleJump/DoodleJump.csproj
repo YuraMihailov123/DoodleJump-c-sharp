@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Bonus.cs" />
+    <Compile Include="Classes\Bullet.cs" />
+    <Compile Include="Classes\Enemy.cs" />
     <Compile Include="Classes\Physics.cs" />
     <Compile Include="Classes\Platform.cs" />
     <Compile Include="Classes\PlatformController.cs" />
@@ -93,6 +96,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\enemies\enemy1r.png" />
+    <Content Include="Images\enemies\enemy2r.png" />
+    <Content Include="Images\enemies\enemy3r.png" />
+    <None Include="Images\jetpack.png" />
+    <None Include="Images\man_jetpack.png" />
+    <Content Include="Images\spring.png" />
+    <None Include="Images\man_shooting.png" />
+    <None Include="Images\man2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
